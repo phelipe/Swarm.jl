@@ -4,7 +4,7 @@
 # podendo utilizar topologia local ou global
 
 function pso(func::Function, particles::Particles, constraints, args, kwargs, 
-    ω , ϕp, ϕg, maxiter, minstep, minfunc, verbose, localsearch, n)
+    ψ , ϕp, ϕg, maxiter, minstep, minfunc, verbose, localsearch, n)
 
     obj = x -> func(x, args...; kwargs...)
     cons = make_constraints(constraints, args, kwargs, verbose)
@@ -58,7 +58,7 @@ function pso(func::Function, particles::Particles, constraints, args, kwargs,
         # Eq(2): x = x +v          
         rp = rand(particles.swarmsize) # random value 
         rg = rand(particles.swarmsize) # random value
-        particles.v = ω .* ( particles.v .+ (ϕp .* rp .* (particles.p .- particles.x)) .+
+        particles.v = ψ .* ( particles.v .+ (ϕp .* rp .* (particles.p .- particles.x)) .+
         (ϕg .* rg .* (particles.g .- particles.x)) )
         particles.x = particles.x .+ particles.v    
 
@@ -135,7 +135,7 @@ end
 # swarmsize => total de partículas
 
 function pso(func::Function, lb::Vector, ub::Vector; constraints=nothing, args=(), kwargs=Dict(),
-     swarmsize=100, omega=0.5, phip=0.5, phig=0.5, maxiter=100, minstep=1e-8, minfunc=1e-8,
+     swarmsize=100, psi=0.5, phip=0.5, phig=0.5, maxiter=100, minstep=1e-8, minfunc=1e-8,
             verbose=false,  localsearch = false, neighborhood = 2)
 
     @assert length(ub) == length(lb) "ub and lb must have same dimension"
@@ -153,7 +153,7 @@ function pso(func::Function, lb::Vector, ub::Vector; constraints=nothing, args=(
 end
 
 function pso(particles:: Particles, func::Function; constraints=nothing, args=(), kwargs=Dict(),
-    omega=0.5, phip=0.5, phig=0.5, maxiter=100, minstep=1e-8, minfunc=1e-8,
+    psi=0.5, phip=0.5, phig=0.5, maxiter=100, minstep=1e-8, minfunc=1e-8,
     verbose=false, localsearch = false, neighborhood = 2)
 
     @assert iseven(neighborhood) "The value of 'neighborhood' must be even"
