@@ -148,7 +148,7 @@ function pso(func::Function, lb::Vector, ub::Vector; constraints=nothing, args=(
 
     neighborhood = Integer(neighborhood/2)
     pso(func, particles, constraints, args, kwargs,
-    omega, phip, phig, maxiter, minstep, minfunc, verbose,localsearch, neighborhood)
+    psi, phip, phig, maxiter, minstep, minfunc, verbose,localsearch, neighborhood)
     return particles
 end
 
@@ -163,6 +163,6 @@ function pso(particles:: Particles, func::Function; constraints=nothing, args=()
     neighborhood= Integer(neighborhood/2)
 
     pso(func, particles, constraints, args, kwargs,
-        omega, phip, phig, maxiter, minstep, minfunc, verbose, localsearch, neighborhood)
+        psi, phip, phig, maxiter, minstep, minfunc, verbose, localsearch, neighborhood)
     
 end
