@@ -1,0 +1,11 @@
+name = "Swarm"
+uuid = "3cf6e28f-4d0b-58dd-b4ae-e6abc0aa9cf7"
+authors = ["Phelipe Wesley <phelipewesleydeoliveira@gmail.com>"]
+
+[deps]
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
