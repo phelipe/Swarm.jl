@@ -193,7 +193,7 @@ return particles
 end
 
 function hpso(particles:: Particles, func::Function; constraints=nothing, args=(), kwargs=Dict(),
-    swarmsize=100, omegastart=0.9, omegaend=0.4, phip=0.5, phig=0.5, eta = 0.001, lambda = 0.94,
+    omegastart=0.9, omegaend=0.4, phip=0.5, phig=0.5, eta = 0.001, lambda = 0.94,
     maxiter=100, maxiterSA = 30, minstep=1e-8, minfunc=1e-8, verbose=false)
 
 hpso(func, particles, constraints, args, kwargs, omegastart, omegaend, phip,

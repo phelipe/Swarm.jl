@@ -213,9 +213,9 @@ end
 
 # particleSA => total de partículas que serão usadas no algoritmo SA
 function ihpso(particles:: Particles, func::Function; constraints=nothing, args=(), kwargs=Dict(),
-    swarmsize = 100, psi =0.9, omegastart = 0.9, omegaend = 0.4, phip = 0.5, phig = 0.5, eta = 0.001, lambda = 0.94,
+    psi =0.9, omegastart = 0.9, omegaend = 0.4, phip = 0.5, phig = 0.5, eta = 0.001, lambda = 0.94,
     maxiter = 100, maxiterSA = 30, minstep = 1e-8, minfunc = 1e-8, verbose = false, neighborhood = 2, 
-    particleSA = round(Int, 0.1*swarmsize))
+    particleSA = round(Int, 0.1*particles.swarmsize))
 
     @assert iseven(neighborhood) "The value of 'neighborhood' must be even"
     @assert (particles.swarmsize >= neighborhood) " 'swarmsize' must be greater
@@ -228,4 +228,3 @@ function ihpso(particles:: Particles, func::Function; constraints=nothing, args=
 end
 
 
-# TODO: 
